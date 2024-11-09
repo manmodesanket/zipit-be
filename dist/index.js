@@ -17,6 +17,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const supabase_js_1 = require("@supabase/supabase-js");
 const body_parser_1 = __importDefault(require("body-parser"));
 const uuid_1 = require("uuid");
+const cors_1 = __importDefault(require("cors"));
 dotenv_1.default.config();
 const supabaseUrl = process.env.SUPABASE_PROJECT_URL;
 const supabaseKey = process.env.SUPABASE_API_KEY;
@@ -25,6 +26,7 @@ const app = (0, express_1.default)();
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 const port = process.env.PORT || 3000;
+app.use((0, cors_1.default)());
 app.get("/", (_, res) => {
     res.send("Hello, TypeScript with Express!");
 });

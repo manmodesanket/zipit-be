@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { createClient } from "@supabase/supabase-js";
 import bodyParser from "body-parser";
 import { v4 as uuidv4 } from "uuid";
+import cors from "cors";
 
 dotenv.config();
 
@@ -15,6 +16,8 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 const port = process.env.PORT || 3000;
+
+app.use(cors());
 
 app.get("/", (_, res: Response) => {
   res.send("Hello, TypeScript with Express!");
